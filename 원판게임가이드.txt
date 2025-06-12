@@ -1,4 +1,4 @@
-반응형 게임을 만든다. 
+반응형 게임을 만든다. (html)
 글자는 넥슨고딕체 사용하라. 
 디자인은 깔끔하고, 세련되게 하라라
 배경색은 베이지색으로 한다. 
@@ -43,6 +43,6 @@ H2 아래에 margin bottom 30px 준다.
 
 우 하단에 다음의 챗봇 링크를 연결해다오. 
 'Chat Bot' 이름을 써다오. 
-https://chatgpt.com/gpts/editor/g-67fd9758e0f08191b95f80f2a2fdbdf5
+https://chatgpt.com/g/g-684a191e7de88191b051f5be355c4a6b-jailrokyubeu-q-a
 
 모든 파일의 모든 줄에는 상세한 주석을 단다.
