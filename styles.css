@@ -1,0 +1,266 @@
+/* 넥슨 웹폰트를 가져와서 적용하기 위한 @font-face 선언 */
+/* 가이드 요구사항: 글자는 웹폰트, 넥슨체 또는 구글폰트를 사용 */
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF'; /* 폰트 패밀리명 정의 */
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); /* CDN에서 웹폰트 로드 */
+    font-weight: normal; /* 폰트 굵기 기본값 설정 */
+    font-style: normal; /* 폰트 스타일 기본값 설정 */
+}
+
+/* 전체 페이지의 기본 스타일 설정 */
+/* 가이드 요구사항: 반응형 게임을 만들고, 디자인은 깔끔하고 세련되게 구현 */
+body {
+    /* 기본 폰트를 Nexon 폰트로 변경하여 일관된 타이포그래피 구현 */
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif;
+    /* 사용자의 시스템에 Nexon 폰트가 없을 경우를 대비하여 기본 sans-serif 폰트 지정 */
+    display: flex; /* Flexbox 레이아웃 사용하여 중앙 정렬 구현 */
+    flex-direction: column; /* 항목들을 세로로 정렬 */
+    align-items: center; /* 가로축 중앙 정렬 */
+    justify-content: center; /* 세로축 중앙 정렬 (콘텐츠가 적을 경우 화면 중앙에 오도록) */
+    min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정하여 모든 디바이스에서 중앙 정렬 보장 */
+    margin: 0; /* body의 기본 마진 제거하여 여백 없는 레이아웃 구성 */
+    /* 깔끔한 그레이 그라데이션 배경으로 세련된 느낌 연출 */
+    background: linear-gradient(135deg, #f2f2f2, #e0e0e0);
+    color: #333; /* 기본 텍스트 색상을 어두운 회색으로 설정하여 가독성 향상 */
+    padding: 20px; /* 전체적인 여백 설정하여 모바일에서도 여유있는 레이아웃 구성 */
+    box-sizing: border-box; /* padding과 border를 width/height에 포함하여 정확한 크기 계산 */
+}
+
+/* 게임 컨테이너의 스타일 설정 */
+/* 모든 게임 요소를 감싸는 메인 컨테이너로 중앙 정렬 및 카드형 디자인 적용 */
+.container {
+    text-align: center; /* 내부 모든 요소 중앙정렬 */
+    background-color: #ffffff; /* 깔끔한 흰색 배경으로 콘텐츠와 배경 분리 */
+    padding: 30px; /* 내부 여백 설정하여 여유있는 공간 구성 */
+    border-radius: 15px; /* 모서리 둥글게 처리하여 모던한 느낌 연출 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 효과로 입체감 표현 */
+    width: 100%; /* 부모 요소의 전체 너비 사용 */
+    max-width: 500px; /* 최대 너비 제한하여 데스크톱에서 적절한 크기 유지 */
+    display: flex; /* Flexbox 레이아웃 사용 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    align-items: center; /* 모든 자식 요소 중앙정렬 */
+}
+
+/* 메인 제목(h1)의 스타일 설정 */
+/* 가이드 요구사항: 제목을 "자일로큐브 행운을 주세요!"로 표시 */
+/* 가이드 요구사항: H1 위에 margin top 30px 추가 */
+h1 {
+    font-size: 2.2em; /* 제목 폰트 크기를 크게 설정하여 시각적 강조 */
+    color: #d9534f; /* 포인트 색상으로 빨간색 계열 사용하여 주목도 향상 */
+    margin: 40px auto 10px auto; /* 가이드 요구사항: 상단 30px, 하단 10px 마진 설정 */
+    font-weight: bold; /* 굵게 처리하여 임팩트 강화 */
+    text-align: center; /* 텍스트 중앙정렬 */
+    width: 100%; /* 전체 너비 사용 */
+}
+
+/* H2 부제목의 스타일 설정 */
+/* 사용자에게 게임 방법을 안내하는 설명 텍스트 */
+/* 가이드 요구사항: H2. '버튼을 눌러 행운을 가져가세요' H2 아래에 margin bottom 20px 추가 */
+h2.subtitle {
+    font-size: 1.1em; /* 부제목 폰트 크기 설정 */
+    color: #777; /* 부드러운 회색으로 메인 제목과 차별화 */
+    margin: 10px auto 50px auto; /* 가이드 요구사항: 하단 20px 마진 설정 */
+    text-align: center; /* 텍스트 중앙정렬 */
+    width: 100%; /* 전체 너비 사용 */
+    font-weight: normal; /* H2의 기본 굵기를 일반으로 설정 */
+}
+
+/* 룰렛 컨테이너 스타일 */
+.wheel-container {
+    position: relative; /* 자식 요소(포인터)의 absolute 위치 기준 */
+    width: 80vw; /* 뷰포트 너비의 80% */
+    height: 80vw; /* 뷰포트 너비의 80% (정사각형 유지) */
+    max-width: 400px; /* 최대 크기 제한 */
+    max-height: 400px; /* 최대 크기 제한 */
+    margin: 0 auto 30px auto; /* 완전한 중앙정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 룰렛 캔버스 스타일 */
+#wheelCanvas {
+    width: 100%; /* 부모 요소(wheel-container) 너비에 맞춤 */
+    height: 100%; /* 부모 요소(wheel-container) 높이에 맞춤 */
+    border-radius: 50%; /* 완벽한 원형 */
+    /* 그림자 효과를 좀 더 세련되게 */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(0,0,0,0.05);
+    /* 회전 애니메이션 부드럽게 */
+    transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    display: block; /* block으로 설정하여 중앙정렬 보장 */
+    margin: 0 auto; /* 추가 중앙정렬 */
+}
+
+/* 포인터 스타일 */
+.pointer {
+    width: 0;
+    height: 0;
+    /* 삼각형 모양 만들기 (border 트릭 사용) */
+    border-left: 15px solid transparent; /* 왼쪽 투명 테두리 */
+    border-right: 15px solid transparent; /* 오른쪽 투명 테두리 */
+    border-top: 25px solid #d9534f; /* 위쪽 빨간색 테두리 (포인터 색상) */
+    position: absolute; /* 룰렛 컨테이너 기준으로 위치 지정 */
+    top: -10px; /* 룰렛 중앙에서 약간 위로 (겹치지 않도록) */
+    left: 50%; /* 가로 중앙 */
+    transform: translateX(-50%); /* 정확한 가로 중앙 정렬 */
+    z-index: 10; /* 다른 요소보다 위에 표시 */
+    filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.2)); /* 포인터 그림자 */
+}
+
+/* 결과 텍스트 스타일 */
+#resultText {
+    font-size: 1.8em; /* 결과 텍스트 폰트 크기 */
+    color: #2c3e50; /* 결과 텍스트 색상 (짙은 네이비 계열) */
+    margin: 0 auto 30px auto; /* 완전한 중앙정렬 */
+    font-weight: bold; /* 굵게 */
+    min-height: 1.8em; /* 텍스트가 없을 때도 높이 유지 (깜빡임 방지) */
+    opacity: 0; /* 초기에는 숨김 (투명) */
+    transition: opacity 0.5s ease-in-out; /* 나타날 때 부드러운 효과 */
+    text-align: center; /* 텍스트 중앙정렬 */
+    width: 100%;
+    display: block; /* block으로 설정하여 중앙정렬 보장 */
+}
+
+/* 결과 텍스트 보일 때 스타일 */
+#resultText.visible {
+    opacity: 1; /* 보이게 (불투명) */
+}
+
+/* 시작 버튼 스타일 */
+#spinButton {
+    background-color: #5cb85c; /* 산뜻한 녹색 계열 */
+    color: white; /* 글자색 흰색 */
+    border: none; /* 테두리 없음 */
+    padding: 15px 80px; /* 내부 여백 */
+    font-size: 1.2em; /* 폰트 크기 */
+    border-radius: 8px; /* 모서리 약간 둥글게 */
+    cursor: pointer; /* 마우스 오버 시 포인터 모양 변경 */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* 부드러운 색상 및 크기 변경 효과 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 버튼 그림자 */
+    font-weight: bold;
+    margin: 0 auto; 완전한 중앙정렬
+    display: block; /* block으로 설정하여 중앙정렬 보장 */
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 버튼에도 Nexon 폰트 적용 */
+}
+
+/* 버튼에 마우스 올렸을 때 스타일 */
+#spinButton:hover {
+    background-color: #064e06; /* 약간 더 어두운 녹색 */
+}
+
+/* 버튼 눌렀을 때 스타일 */
+#spinButton:active {
+    background-color: #449d44; /* 더 어두운 녹색 */
+    transform: scale(0.98); /* 살짝 작아지는 효과 */
+}
+
+/* 버튼 비활성화 시 스타일 */
+#spinButton:disabled {
+    background-color: #cccccc; /* 회색으로 변경 */
+    cursor: not-allowed; /* 커서 모양 변경 (작동 안 함 표시) */
+    box-shadow: none;
+}
+
+/* 모바일 화면 대응 (화면 너비 600px 이하) */
+@media (max-width: 600px) {
+    .game-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em; /* 모바일에서 제목 폰트 크기 줄임 */
+    }
+
+    h2.subtitle {
+        font-size: 1em; /* 모바일에서 H2 부제목 폰트 크기 줄임 */
+        margin-bottom: 20px; /* 하단 마진 설정 */
+    }
+
+    .wheel-container {
+        width: 75vw; /* 모바일에서 룰렛 크기 약간 줄임 */
+        height: 75vw;
+        margin-bottom: 20px;
+    }
+    
+    .pointer {
+        border-left-width: 12px;
+        border-right-width: 12px;
+        border-top-width: 20px;
+        top: -8px;
+    }
+
+    #resultText {
+        font-size: 1.5em; /* 모바일에서 결과 텍스트 폰트 크기 줄임 */
+        margin-bottom: 20px;
+    }
+
+    #spinButton {
+        padding: 12px 25px; /* 모바일에서 버튼 내부 여백 줄임 */
+        font-size: 1.1em; /* 모바일에서 버튼 폰트 크기 줄임 */
+    }
+}
+
+/* 우하단 챗봇 링크 스타일 */
+/* 가이드 요구사항: 우 하단에 챗봇 링크를 연결해다오 */
+.chatbot-link {
+    position: fixed; /* 화면에 고정 위치 */
+    bottom: 20px; /* 하단에서 20px 떨어진 위치 */
+    right: 20px; /* 우측에서 20px 떨어진 위치 */
+    background-color: #007bff; /* 파란색 배경으로 채팅을 연상시키는 색상 */
+    color: white; /* 흰색 글자로 대비 강화 */
+    padding: 12px 20px; /* 내부 여백으로 적절한 크기 설정 */
+    border-radius: 25px; /* 둥근 모서리로 친근한 느낌 연출 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    font-weight: bold; /* 굵은 글씨로 강조 */
+    font-size: 14px; /* 적절한 폰트 크기 */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* 파란색 그림자로 입체감 표현 */
+    transition: all 0.3s ease; /* 부드러운 호버 효과를 위한 전환 */
+    z-index: 1000; /* 다른 요소들보다 위에 표시 */
+    font-family: 'NEXON Lv1 Gothic OTF', sans-serif; /* 넥슨 폰트 적용 */
+}
+
+/* 챗봇 링크 호버 효과 */
+.chatbot-link:hover {
+    background-color: #0056b3; /* 더 어두운 파란색으로 변경 */
+    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4); /* 더 진한 그림자 효과 */
+}
+
+/* 비행기 애니메이션 컨테이너 */
+/* 가이드 요구사항: 꽝이 나오면 비행기가 왼쪽에서 오른쪽으로 5초간 날아가게 하라 */
+.airplane-animation {
+    position: fixed; /* 화면에 고정 위치 */
+    top: 0; /* 화면 상단부터 */
+    left: 0; /* 화면 왼쪽부터 */
+    width: 100vw; /* 전체 화면 너비 */
+    height: 100vh; /* 전체 화면 높이 */
+    pointer-events: none; /* 마우스 이벤트 무시 */
+    z-index: 9999; /* 최상위 레이어에 표시 */
+    overflow: hidden; /* 화면 밖 요소 숨김 */
+}
+
+/* 비행기 스타일 */
+.airplane {
+    position: absolute; /* 절대 위치 */
+    font-size: 48px; /* 큰 크기의 비행기 이모지 */
+    top: 30%; /* 화면 상단에서 30% 위치 */
+    left: -100px; /* 화면 왼쪽 밖에서 시작 */
+    animation: flyAcross 5s linear; /* 5초간 직선으로 날아가는 애니메이션 */
+}
+
+/* 비행기 날아가는 키프레임 애니메이션 */
+/* 가이드 요구사항: 왼쪽에서 오른쪽으로 5초간 날아가는 효과 */
+@keyframes flyAcross {
+    0% {
+        left: -100px; /* 시작: 화면 왼쪽 밖 */
+        transform: rotate(-10deg); /* 약간 기울어진 상태로 시작 */
+    }
+    50% {
+        transform: rotate(0deg); /* 중간: 수평 상태 */
+    }
+    100% {
+        left: calc(100vw + 100px); /* 끝: 화면 오른쪽 밖으로 */
+        transform: rotate(10deg); /* 약간 기울어진 상태로 마무리 */
+    }
+} 

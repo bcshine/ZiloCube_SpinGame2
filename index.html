@@ -1,0 +1,66 @@
+<!-- HTML 문서임을 선언하는 DOCTYPE 정의 -->
+<!DOCTYPE html>
+<!-- HTML 문서의 시작, 한국어(ko)를 주 언어로 설정하여 웹접근성 및 SEO 최적화 -->
+<html lang="ko">
+<!-- HTML 문서의 메타데이터를 담는 head 태그 시작 -->
+<head>
+    <!-- 문서의 문자 인코딩을 UTF-8로 설정하여 한글 및 특수문자 정상 표시 -->
+    <meta charset="UTF-8">
+    <!-- 뷰포트 설정을 통해 다양한 디바이스에서의 반응형 동작을 제어하여 모바일 최적화 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 웹 페이지의 제목을 설정 (브라우저 탭에 표시되며 북마크 및 검색엔진에서 사용) -->
+    <title>자일로큐브 행운을 주세요!</title>
+    <!-- 외부 CSS 파일(styles.css)을 연결하여 HTML 요소들의 스타일을 정의 -->
+    <link rel="stylesheet" href="styles.css">
+<!-- head 태그 종료 -->
+</head>
+<!-- 웹 페이지의 실제 내용을 담는 body 태그 시작 -->
+<body>
+    <!-- 전체 게임 요소를 감싸는 최상위 컨테이너 div 시작 (중앙 정렬 및 반응형 레이아웃을 위함) -->
+    <div class="container">
+        <!-- 게임의 주 제목을 표시하는 h1 태그 (가이드 요구사항: H1. '자일로큐브 행운을 주세요!') -->
+        <h1>자일로큐브 행운을 주세요!</h1>
+        <!-- 게임의 부제목을 표시하는 h2 태그 (가이드 요구사항: H2. '버튼을 눌러 행운을 가져가세요') -->
+        <h2 class="subtitle">버튼을 눌러 행운을 가져가세요</h2>
+        
+        <!-- 룰렛판(canvas)과 포인터를 감싸는 컨테이너 div 시작 (상대 위치 설정을 위함) -->
+        <div class="wheel-container">
+            <!-- 룰렛판을 그릴 HTML5 canvas 요소, id는 JavaScript에서 참조하기 위함 -->
+            <!-- 실제 원판이 그려지는 영역으로 가이드의 요구사항인 6개 항목이 동일한 확률로 배치됨 -->
+            <canvas id="wheelCanvas"></canvas> <!-- 초기 width와 height는 CSS 또는 JS에서 동적 설정 -->
+            <!-- 룰렛판의 현재 선택 항목을 가리키는 포인터 div (삼각형 모양으로 CSS에서 스타일링) -->
+            <!-- 가이드 요구사항: 포인터가 경계선이 아닌 내용 부분에서 멈추도록 정확한 위치 계산 -->
+            <div class="pointer"></div>
+        <!-- 룰렛판 컨테이너 div 종료 -->
+        </div>
+        
+        <!-- 당첨 결과를 표시할 영역 div 시작, id는 JavaScript에서 참조하기 위함 -->
+        <!-- 가이드 요구사항: 멈추고 나면 어떤 것에 당첨되었는지 원판과 버튼 사이에 큰 글씨로 표현 -->
+        <div class="result-display" id="resultDisplay">
+            <!-- 실제 당첨 결과 텍스트가 표시될 p 태그, id는 JavaScript에서 참조하기 위함 -->
+            <p id="resultText"></p>
+        <!-- 결과 표시 영역 div 종료 -->
+        </div>
+        
+        <!-- 룰렛을 돌리기 위한 버튼, id는 JavaScript에서 참조하기 위함 -->
+        <!-- 가이드 요구사항: '시작' 버튼을 누르면 돌아가는 시간은 5초로 설정 -->
+        <button class="spin-button" id="spinButton">시작</button>
+    <!-- 최상위 컨테이너 div 종료 -->
+    </div>
+    
+    <!-- 외부 JavaScript 파일(script.js)을 연결하여 게임의 동적 로직을 구현 -->
+    <!-- 여기서 룰렛 회전, 당첨 계산, 폭죽 효과 등 모든 게임 기능이 처리됨 -->
+    <script src="script.js"></script>
+
+    <!-- 우하단 챗봇 링크 -->
+    <!-- 가이드 요구사항: 우 하단에 챗봇 링크를 연결해다오 -->
+    <a href="https://chatgpt.com/gpts/editor/g-67fd9758e0f08191b95f80f2a2fdbdf5" 
+       target="_blank" 
+       class="chatbot-link">
+        Chat Bot
+    </a>
+
+<!-- body 태그 종료 -->
+</body>
+<!-- HTML 문서 종료 -->
+</html> 
